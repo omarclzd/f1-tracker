@@ -30,6 +30,7 @@ function(accessToken, refreshToken, profile, cb) {
       newUser.save(function(err) {
         if (err) return cb(err);
         return cb(null, newUser);
+        console.log(newUser);
       });
     }
   });
