@@ -1,8 +1,17 @@
 const User  = require('../models/user');
+const standingURL = 'http://ergast.com/api/f1/2019/driverStandings.json';
 
 module.exports = {
   index,
+  getDrivers
 };
+
+function getDrivers(req, res) {
+  request(standingURL, function(err, response, body) {
+    const standings = JSON.parse(body);
+    res.render('drivers/index', {standings})
+  });
+}
 
 function index(req, res, next) {
   console.log(req.query)

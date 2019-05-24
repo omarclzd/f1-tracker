@@ -17,7 +17,7 @@ F1 Midfield Fantasy is an application that allows the user to create a team of f
 Set up Oauth verification. 
 
 Set up models with driver, team, and user Schema. 
-Assing properties withing schemas:
+Assing properties within schemas:
 Driver Properties: name, team, position, points
 UserTeam Properties: drivers, name
 User Properties: name, email, Userteam

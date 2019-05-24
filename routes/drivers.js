@@ -2,6 +2,7 @@ var router = require('express').Router();
 var driversCtrl = require('../controllers/drivers');
 
 router.get('/drivers', driversCtrl.index);
+router.post('/drivers', driversCtrl.getDrivers);
 
 // router.post('/team', isLoggedIn, driversCtrl.addTeam);
 
