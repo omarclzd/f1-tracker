@@ -3,7 +3,7 @@ var passport = require('passport');
 
 // The root route renders our only view
 router.get('/', function(req, res) {
-  res.redirect('/drivers');
+  res.redirect('/teams');
 });
 
 // Google OAuth login route
@@ -16,15 +16,15 @@ router.get('/auth/google', passport.authenticate(
 router.get('/oauth2callback', passport.authenticate(
   'google',
   {
-    successRedirect : '/drivers',
-    failureRedirect : '/drivers'
+    successRedirect : '/teams',
+    failureRedirect : '/teams'
   }
 ));
 
 // OAuth logout route
 router.get('/logout', function(req, res){
   req.logout();
-  res.redirect('/drivers');
+  res.redirect('/teams');
 });
 
 module.exports = router;

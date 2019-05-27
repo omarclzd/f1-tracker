@@ -3,7 +3,10 @@ var Schema = mongoose.Schema;
 
 var driverSchema = new Schema({
   name: String,
-  team: String,
+  team: {
+    type: String,
+    required: true
+  },
   position: Number,
   points: Number
 });

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  
+</head>
+<body>
+
+  <section>
+    <div>Team Name: </div>
+    <div><%= team.name %></div>
+  </section>
+
+<br><br>
+<h2>Add Drivers</h2>
+    <form action="/teams/<%= team._id %>/drivers" method="POST">
+      <label>Driver:</label>
+      <select name="name">
+        <option value="L.Hamilton">L.Hamilton</option>
+        <option value="V.Bottas">V.Bottas</option>
+        <option value="S.Vettel">S.Vettel</option>
+        <option value="M.Verstappen">M.Verstappen</option>
+      </select>
+      <label>Team:</label>
+      <input type="text" name="team">
+      <input type="submit" value="Add driver to team">
+    </form>
+    <% if (team.drivers.length) { %>
+      <table>
+        <thead>
+          <tr>
+            <th>Driver</th>
+            <th>Team</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% team.drivers.forEach(function(d) { %>
+            <tr>
+              <td><%= d.name %></td>
+              <td><%= d.team %></td>
+            </tr>
+          <% }); %>
+          <tr>
+              <td colspan="2"></td>
+            </tr>
+        </tbody>
+      </table>
+    <% } else { %>
+      <h2>No Drivers Yet</h2>
+   <% } %>
+   <a href="/teams">Done Editing</a>
+</body>
+</html>

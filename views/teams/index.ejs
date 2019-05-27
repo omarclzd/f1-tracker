@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Yo!</title>
+  <!-- Google Icon Fonts used by Materialize -->
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Materialize CSS Framework -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" href="stylesheets/style.css" />
+  <!-- JavaScript for Materialize -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+
+
+<body>
+  
+  <div class="navbar-fixed">
+    <nav>
+      <div class="nav-wrapper #c62828 red darken-3">
+        <a href="" class="brand-logo left">F1 Midfield Fantasy</a>
+        <ul class="right">
+          <li>
+            <% if (user) { %>
+              <a href="/logout"><>Log Out</a>
+              <% } else { %>
+                <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
+                <% } %>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+<section class="row">
+<aside class="col s3">
+  <% if (user) { %>
+
+  <h3>User's Team</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% user.teams.forEach(function(t) { %>
+        <tr>
+          <td><%= t.name %></td>
+          <td><a class="waves-effect waves-light blue btn-small right" href="/teams/<%= t._id %>">Edit Team</a></td>
+        </tr>
+     <% }); %>
+    </tbody>
+  </table>
+    <a href="/teams/new" id="addTeam" class="waves-effect waves-light blue btn">Add New Team</a>
+  <% } else { %>
+<h3>Log in to create team!</h3>
+    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. Donec non enim in turpis pulvinar facilisis. Ut felis. Praesent dapibus, neque id cursus faucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus</p>
+ <% } %>
+</aside>
+<main class="col s7">Main</main>
+</section>
+
+<footer class="page-footer #c62828 red darken-3">
+  <div class="container">
+    <div class="row">
+      <div class="col s7">
+        <h5>text</h5>
+        <p>text</p>
+      </div>
+      <div class="col s3">
+          <h5 class="white-text">Links</h5>
+            <ul>
+              <li><a class="grey-text text-lighten-3" href="">GitHub</a></li>
+              <li><a class="grey-text text-lighten-3" href="">Linkedin</a></li>
+            </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+      
+      
+</body>
