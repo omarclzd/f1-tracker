@@ -8,7 +8,8 @@ router.get('/teams', teamsCtrl.index);
 router.get('/teams/new', isLoggedIn, teamsCtrl.new);
 router.get('/teams/:id', teamsCtrl.show);
 router.post('/teams', teamsCtrl.create);
-router.post('/teams', teamsCtrl.addToUser);
+router.get('/teams', teamsCtrl.addToUser);
+router.delete('/teams/:id', teamsCtrl.delTeam);
 
 
 

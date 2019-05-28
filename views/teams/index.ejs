@@ -43,10 +43,13 @@
       </tr>
     </thead>
     <tbody>
-      <% teams.forEach(function(t) { %>
+      <% user.teams.forEach(function(t) { %>
         <tr>
           <td><%= t.name %></td>
           <td><a class="waves-effect waves-light blue btn-small right" href="/teams/<%= t._id %>">Edit Team</a></td>
+         <td><form action="/teams/<%= t._id %>?_method=DELETE" method="POST">
+            <button type="submit">X</button>
+          </form></td>
         </tr>
      <% }); %>
     </tbody>

@@ -11,4 +11,11 @@ var userSchema = new mongoose.Schema({
   timestamps: true 
 });
 
+// userSchema.post('save', function(doc, next) {
+//   doc.populate('teams').execPopulate().then(function() {
+//     next();
+//   });
+// });
+
+
 module.exports = mongoose.model('User', userSchema );

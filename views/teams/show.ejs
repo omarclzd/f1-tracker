@@ -11,46 +11,10 @@
 
   <section>
     <div>Team Name: </div>
-    <div><%= team.name %></div>
+    <div><%= user.teams._id %></div>
   </section>
 
-<br><br>
-<h2>Add Drivers</h2>
-    <form action="/teams/<%= team._id %>/drivers" method="POST">
-      <label>Driver:</label>
-      <select name="familyName">
-          <% driverData.Results.forEach(function(i) { %>  
-        <option value=""><%= i.Driver.familyName %></option> 
-        <% }); %>
-      </select>
-      <label>Team:</label>
-        <input type="text" name="name">
-     
-      <input type="submit" value="Add driver to team">
-    </form>
-    <% if (team.drivers.length) { %>
-      <table>
-        <thead>
-          <tr>
-            <th>Driver</th>
-            <th>Team</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% team.drivers.forEach(function(d) { %>
-            <tr>
-              <td><%= d.familyName %></td>
-              <td><%= d.name %></td>
-            </tr>
-          <% }); %>
-          <tr>
-              <td colspan="2"></td>
-            </tr>
-        </tbody>
-      </table>
-    <% } else { %>
-      <h2>No Drivers Yet</h2>
-   <% } %>
+
    <a href="/teams">Done Editing</a>
 </body>
 </html>
