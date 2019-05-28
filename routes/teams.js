@@ -2,6 +2,7 @@ var router = require('express').Router();
 var teamsCtrl = require('../controllers/teams');
 
 router.get('/teams', teamsCtrl.index);
+// router.get('/teams', teamsCtrl.getDrivers);
 // router.get('/drivers', driversCtrl.getDrivers);
 
 router.get('/teams/new', isLoggedIn, teamsCtrl.new);

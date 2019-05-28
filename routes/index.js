@@ -1,6 +1,7 @@
 var router = require('express').Router();
 var passport = require('passport');
 
+
 // The root route renders our only view
 router.get('/', function(req, res) {
   res.redirect('/teams');
