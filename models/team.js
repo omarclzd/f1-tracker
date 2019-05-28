@@ -2,7 +2,9 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var driverSchema = new Schema({
-
+    familyName: String,
+    name: String,
+    points: String,
 
   // name: String,
   // team: {

@@ -33,27 +33,33 @@ function addToUser(req, res, next) {
 // }
 
 function show(req, res) {
-  Team.findById(req.params.id, function(err, team) {
-    res.render('teams/show', {
-      title: 'Edit Team', team, user: req.user
+  request(driversURL, function(err, response, body) {
+    const driverData = JSON.parse(body);
+    Team.findById(req.params.id, function(err, team) {
+      res.render('teams/show', {
+        title: 'Edit Team',
+        team, 
+        user: req.user,
+        driverData: driverData.MRData.RaceTable.Races[0],
+      });
     });
   });
 }
 
 function create(req, res) {
-  User.findById(req.user.id, function(err, user) {
-    user.teams.push(req.user.body);
-    user.save(function(err) {
-      res.redirect('/teams');
-    });
-  });
-  // var team = new Team(req.body);
-  // team.save(function(err) {
-  //   if (err) return res.redirect('teams/new');
-  //   console.log(team);
-  //   console.log(req.body);
-  //   res.redirect('/teams');
+  // User.findById(req.user.id, function(err, user) {
+  //   user.teams.push(req.user.body);
+  //   user.save(function(err) {
+  //     res.redirect('/teams');
+  //   });
   // });
+  var team = new Team(req.body);
+  team.save(function(err) {
+    if (err) return res.redirect('teams/new');
+    console.log(team);
+    console.log(req.body);
+    res.redirect('/teams');
+  });
 }
 
 function newTeam(req, res) {
@@ -80,22 +86,3 @@ function index(req, res, next) {
 }
 
 
-// function index(req, res, next) {
-//   request(driversURL, function(err, response, body) {
-//     const bob = JSON.parse(body);
-//     console.log(bob);
-//     res.render('drivers/index', {
-//       // standings,
-//       user: req.user
-//       // name: req.query.name,
-//     });
-//   });
-// }
-
-// function getDrivers(req, res, next) {
-//   request(driversURL, function(err, response, body) {
-//     const driverData = JSON.parse(body.driverId);
-//     console.log(driverData);
-//     res.render('teams/index', {driverData: driverData});
-//   });
-// }

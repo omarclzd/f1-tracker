@@ -18,14 +18,14 @@
 <h2>Add Drivers</h2>
     <form action="/teams/<%= team._id %>/drivers" method="POST">
       <label>Driver:</label>
-      <select name="name">
-        <option value="L.Hamilton">L.Hamilton</option>
-        <option value="V.Bottas">V.Bottas</option>
-        <option value="S.Vettel">S.Vettel</option>
-        <option value="M.Verstappen">M.Verstappen</option>
+      <select name="familyName">
+          <% driverData.Results.forEach(function(i) { %>  
+        <option value=""><%= i.Driver.familyName %></option> 
+        <% }); %>
       </select>
       <label>Team:</label>
-      <input type="text" name="team">
+        <input type="text" name="name">
+     
       <input type="submit" value="Add driver to team">
     </form>
     <% if (team.drivers.length) { %>
@@ -39,8 +39,8 @@
         <tbody>
           <% team.drivers.forEach(function(d) { %>
             <tr>
+              <td><%= d.familyName %></td>
               <td><%= d.name %></td>
-              <td><%= d.team %></td>
             </tr>
           <% }); %>
           <tr>
