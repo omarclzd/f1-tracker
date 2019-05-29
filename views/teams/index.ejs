@@ -36,9 +36,7 @@
 <aside class="col s3">
   <% if (user) { %>
   <h3>User's Team</h3>
-  <div>
-    <form action=""></form>
-  </div>
+  
   <table>
     <thead>
       <tr>
@@ -55,6 +53,8 @@
          <td><form action="/teams/<%= t._id %>?_method=DELETE" method="POST">
             <button type="submit">X</button>
           </form></td>
+        
+           <td><a href="/teams/<%= t._id %>/edit">update</a></td>
           
         </tr>
      <% }); %>

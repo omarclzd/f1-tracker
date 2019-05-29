@@ -11,10 +11,16 @@ module.exports = {
   create,
   show,
   delTeam,
-  update
+  edit,
+  updateTeam,
 };
 
-
+function edit(req, res) {
+  User.findById(req.params.id, function(err, bar) {
+    let red = req.params.id;
+    res.render('teams/edit', { red, user: req.user});
+  });
+}
 
 function show(req, res) {
   request(driversURL, function(err, response, body) {
@@ -123,9 +129,10 @@ User.findOne({'teams._id': req.params.id}, function(err, user) {
  
 }
 
-function update(req, res, next) {
-User.findByIdAndUpdate(req.params.id, req.body, function(err, teams) {
-  console.log(req.body);
+function updateTeam(req, res, next) {
+User.findByIdAndUpdate(req.params.id, req.body, function(err, user) {
+  console.log(req.params.id);
+  
 user.teams.save(function(err) {
   res.redirect('/teams');
 });

@@ -35,9 +35,9 @@
  <h1>Edit Team!</h1>
  
 
-  <form action="/teams/update/<%= t._id %>?_method=PUT" method="POST">
+  <form action="/teams/<%= red %>?_method=PUT" method="POST">
      <label>Team:</label>
-     <input type="text" name="name">
+     <input type="text" name="name" value="<%= user.teams.name %>">
      <input type="submit" value="Update">
  </form>
 
