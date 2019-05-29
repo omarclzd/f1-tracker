@@ -1,12 +1,31 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
+
+var driverSchema = new Schema({
+  familyName: String,
+  name: String,
+  points: String,
+
+
+});
+
+var teamSchema = new Schema({
+name: String,
+nationality: String,
+constructorId: String,
+
+
+});
+
+
 var userSchema = new mongoose.Schema({
   name: String,
   email: String,
   avatar: String,
   googleId: String,
-  teams: [{type: Schema.Types.ObjectId, ref: 'Team'}]
+  drivers: [driverSchema],
+  teams: [teamSchema]
 }, {
   timestamps: true 
 });
@@ -18,4 +37,8 @@ var userSchema = new mongoose.Schema({
 // });
 
 
-module.exports = mongoose.model('User', userSchema );
+
+module.exports = mongoose.model('User', userSchema)
+
+
+ 

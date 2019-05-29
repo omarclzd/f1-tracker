@@ -5,16 +5,77 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
-  
+   <!-- Google Icon Fonts used by Materialize -->
+   <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+   <!-- Materialize CSS Framework -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+   <link rel="stylesheet" href="stylesheets/style.css" />
+   <!-- JavaScript for Materialize -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
+    <div class="navbar-fixed">
+        <nav>
+          <div class="nav-wrapper #c62828 red darken-3">
+            <a href="" class="brand-logo left">F1 Midfield Fantasy</a>
+            <ul class="right">
+              <li>
+                <% if (user) { %>
+                  <a href="/logout"><>Log Out</a>
+                  <% } else { %>
+                    <a href="/auth/google"><i class="material-icons left">vpn_key</i>Login with Google</a>
+                    <% } %>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>  
 
   <section>
-    <div>Team Name: </div>
-    <div><%= user.teams._id %></div>
+    <h3>Team</h3>
+    
   </section>
 
 
    <a href="/teams">Done Editing</a>
+<br><br>
+<h2>Add Drivers</h2>
+   <form action="/teams/<%= red %>/drivers" method="POST">
+       <label>Driver:</label>
+       <select name="familyName">
+           <% driverData.Results.forEach(function(i) { %> 
+         <option value=""><%= i.Driver.familyName %></option>
+         <% }); %>
+       </select>
+       <label>Team:</label>
+         <input type="text" name="name">
+       <input type="submit" value="Add driver to team">
+   </form>
+  
+   <% if (user.teams.red.drivers.length) { %>
+     <table>
+       <thead>
+         <tr>
+           <th>Driver</th>
+           <th>Team</th>
+         </tr>
+       </thead>
+       <tbody>
+         <% user.teams.red.drivers.forEach(function(d) { %>
+           <tr>
+             <td><%= d.familyName %></td>
+             <td><%= d.name %></td>
+           </tr>
+         <% }); %>
+         <tr>
+             <td colspan="2"></td>
+           </tr>
+       </tbody>
+     </table>
+   <% } else { %>
+     <h2>No Drivers Yet</h2>
+  <% } %>
+
+
 </body>
 </html>
