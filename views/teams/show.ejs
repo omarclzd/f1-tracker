@@ -40,7 +40,7 @@
    <a href="/teams">Done Editing</a>
 <br><br>
 <h2>Add Drivers</h2>
-   <form action="/teams/<%= red %>/drivers" method="POST">
+   <form action="/teams/<%= red %>" method="POST">
        <label>Driver:</label>
        <select name="familyName">
            <% driverData.Results.forEach(function(i) { %> 
@@ -51,8 +51,17 @@
          <input type="text" name="name">
        <input type="submit" value="Add driver to team">
    </form>
+
+   <br><br>
+ <div>
+  <form action="/teams/<%= red %>?_method=PUT" method="POST">
+    <label>Team:</label>
+    <input type="text" name="name">
+    <input type="submit" value="Update">
+  </form>
+ </div>
   
-   <% if (user.teams.red.drivers.length) { %>
+   <% if (user.teams.length) { %>
      <table>
        <thead>
          <tr>
@@ -61,7 +70,7 @@
          </tr>
        </thead>
        <tbody>
-         <% user.teams.red.drivers.forEach(function(d) { %>
+         <% user.teams.forEach(function(d) { %>
            <tr>
              <td><%= d.familyName %></td>
              <td><%= d.name %></td>

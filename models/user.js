@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 
 var driverSchema = new Schema({
   familyName: String,
-  name: String,
+  givenName: String,
   points: String,
 
 
@@ -21,6 +21,7 @@ constructorId: String,
 
 var userSchema = new mongoose.Schema({
   name: String,
+  favoriteTeam: String,
   email: String,
   avatar: String,
   googleId: String,

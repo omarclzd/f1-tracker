@@ -10,7 +10,8 @@ module.exports = {
   new: newTeam,
   create,
   show,
-  delTeam
+  delTeam,
+  update
 };
 
 
@@ -53,17 +54,14 @@ function show(req, res) {
 }
 
 function create(req, res) {
-  request(teamsURL, function(err, response, body) {
-    const teamData = JSON.parse(body);
+  
   User.findById(req.session.passport.user, function(err, user) {
     user.teams.push(req.body);
     user.save(function(err) {
-      res.redirect('/teams', {
-        teamData: teamData.MRData.ConstructorTable.Constructors,
-      });
+      res.redirect('/teams');
     });
     console.log(req.body);
-  });
+  
 });
    
   // const getUser = function() { 
@@ -123,5 +121,23 @@ User.findOne({'teams._id': req.params.id}, function(err, user) {
   });
 });
  
+}
+
+function update(req, res, next) {
+User.findByIdAndUpdate(req.params.id, req.body, function(err, teams) {
+  console.log(req.body);
+user.teams.save(function(err) {
+  res.redirect('/teams');
+});
+});
+
+
+  // User.update({'teams._id': req.params.id}, teams.name).exec(function(err, user) {
+    
+  //     res.redirect('/teams', {
+        
+  //     } );
+  //   });
+     
 }
 

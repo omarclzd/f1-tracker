@@ -18,7 +18,7 @@ function create(req, res) {
 
 
 function newDriver(req, res) {
-  request(driverURL, function(err, response, body) {
+  request(driversURL, function(err, response, body) {
     const driverData = JSON.parse(body);
     // console.log(teamData.MRData.ConstructorTable.Constructors);
   res.render('teams/new', {
