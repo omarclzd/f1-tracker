@@ -21,7 +21,8 @@ function show(req, res) {
       User.findById(req.params.id, req.body, function(err, team) { 
         let red = req.params.id;
         console.log(red);
-        console.log(req.body);
+        // console.log(teams.name);
+        
         res.render('teams/show', {
           title: 'Edit Team',
           user: req.user,
