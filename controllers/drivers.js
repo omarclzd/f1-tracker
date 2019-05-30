@@ -5,8 +5,27 @@ const driversURL = 'http://ergast.com/api/f1/2019/last/results.json';
 
 module.exports = {
   create,
-new: newDriver
+new: newDriver,
+show,
+delDriver
 };
+
+function show(req, res) {
+ 
+  
+      User.findById(req.params.id, req.body, function(err, team) { 
+        let red = req.params.id;
+        console.log(red);
+        console.log(req.body);
+        res.render('teams/show', {
+          title: 'Edit Team',
+          user: req.user,
+          red,
+           
+        });
+      });
+  
+  }
 
 function create(req, res) {
   User.findById(req.session.passport.user, function(err, user) {
@@ -31,18 +50,11 @@ function newDriver(req, res) {
   });
 }
 
-// function create(req, res) {
-//   Driver.create(req.body, function(err, drivers) {
-//     res.redirect('teams/show');
-//   });
-// }
-
-// function addToTeam(req, res) {
-//   User.findById(req.session.passport.user, function(err, user) {
-//     user.teams.push(req.body.driversId);
-//     user.save(function(err) {
-//       res.redirect(`/teams/${teams._id}`);
-//     });
-    
-//   });
-// }
+function delDriver(req, res) {
+  User.findOne({'drivers._id': req.params.id}, function(err, user) {
+    user.drivers.id(req.params.id).remove();
+    user.save(function(err) {
+      res.redirect('/teams');
+    });
+  });
+}

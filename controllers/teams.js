@@ -6,7 +6,6 @@ const teamsURL = 'http://ergast.com/api/f1/2019/constructorStandings.json';
 
 module.exports = {
   index,
-  
   new: newTeam,
   create,
   show,
@@ -19,54 +18,39 @@ function show(req, res) {
   request(teamsURL, function(err, response, body) {
     const teamData = JSON.parse(body);
     // console.log(teamData.MRData.StandingsTable.StandingsLists[0].ConstructorStandings);
-   
-            User.findById(req.params.id, req.body, function(err, team) {
-              
-              let red = req.params.id;
-              console.log(red);
-              console.log(req.body);
-
-              
-              res.render('teams/show', {
-                title: 'Edit Team',
-                user: req.user,
-                red,
-                teamData: teamData.MRData.StandingsTable.StandingsLists[0].ConstructorStandings,
-                
-              });
-            });
-          });
-        }
+      User.findById(req.params.id, req.body, function(err, team) { 
+        let red = req.params.id;
+        console.log(red);
+        console.log(req.body);
+        res.render('teams/show', {
+          title: 'Edit Team',
+          user: req.user,
+          red,
+          teamData: teamData.MRData.StandingsTable.StandingsLists[0].ConstructorStandings,     
+        });
+      });
+    });
+  }
         
-        function create(req, res) {
+  function create(req, res) {   
+    User.findById(req.session.passport.user, function(err, user) {                            
+        user.teams.push(req.body);
+        user.save(function(err) {
+          res.redirect('/teams');   
+      });
+    });          
+    }
           
-          User.findById(req.session.passport.user, function(err, user) {
-         
-                                        
-              user.teams.push(req.body);
-              user.save(function(err) {
-                res.redirect('/teams');
-              
-            });
-            console.log(req.body);
-            
-          });
-          
-    
-                  
-                  
-                }
-                
-                function newTeam(req, res) {
-                  request(teamsURL, function(err, response, body) {
-                    const teamData = JSON.parse(body);
-                    // console.log(teamData.MRData.ConstructorStandings);
-                    res.render('teams/new', {
-                      user: req.user,
-                     
-                    });
-                  });
-                }
+  function newTeam(req, res) {
+    request(teamsURL, function(err, response, body) {
+      const teamData = JSON.parse(body);
+      // console.log(teamData.MRData.ConstructorStandings);
+      res.render('teams/new', {
+        user: req.user,
+        
+      });
+    });
+  }
                 
                 
     function index(req, res, next) {
@@ -82,15 +66,14 @@ function show(req, res) {
     }
                 
                 
-                function delTeam(req, res, next) {
-                  User.findOne({'teams._id': req.params.id}, function(err, user) {
-                    user.teams.id(req.params.id).remove();
-                    user.save(function(err) {
-                      res.redirect('/teams');
-                    });
-                  });
-                  
-                }
+  function delTeam(req, res, next) {
+    User.findOne({'teams._id': req.params.id}, function(err, user) {
+      user.teams.id(req.params.id).remove();
+      user.save(function(err) {
+        res.redirect('/teams');
+      });
+    });
+  }
                 
  function edit(req, res) {
    User.findById(req.params.id, function(err, user) {
