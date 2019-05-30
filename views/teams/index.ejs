@@ -3,7 +3,7 @@
 <html>
 
 <head>
-  <title>Yo!</title>
+  <title>F1 Tracker</title>
   <!-- Google Icon Fonts used by Materialize -->
   <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <!-- Materialize CSS Framework -->
@@ -19,7 +19,7 @@
   <div class="navbar-fixed">
     <nav>
       <div class="nav-wrapper #c62828 red darken-3">
-        <a href="" class="brand-logo left">F1 Midfield Fantasy</a>
+        <a href="" class="brand-logo left">F1 Tracker</a>
         <ul class="right">
           <li>
             <% if (user) { %>
@@ -116,6 +116,8 @@
                   <th>Position</th>
                   <th>Driver</th>
                   <th>Team</th>
+                  <th>Status</th>
+                  <th>Fastest Lap</th>
                   <th>Points</th>
                 </tr>
               </thead>
@@ -124,6 +126,8 @@
                     <td><%= i.position %></td>
                     <td><%= i.Driver.familyName %></td>
                     <td><%= i.Constructor.name %></td>
+                    <td><%= i.status %></td>
+                    <td><%= i.FastestLap.Time.time %></td>
                     <td><%= i.points %></td>
                   </tr>
              <% }); %>
@@ -142,6 +146,10 @@
 </main>
 <aside>
 <% if (user) { %>
+  <h3>Top 3 drivers stats</h3>
+  <table>
+
+  </table>
 
   <% } else { %>
     <h3>More Stats</h3>

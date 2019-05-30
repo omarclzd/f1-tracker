@@ -2,7 +2,7 @@ const User  = require('../models/user');
 // const Driver = require('../models/driver');
 const request = require('request');
 const driversURL = 'http://ergast.com/api/f1/2019/last/results.json';
-const teamsURL = 'http://ergast.com/api/f1/2019/constructors.json';
+const teamsURL = 'http://ergast.com/api/f1/2019/constructorStandings.json';
 
 module.exports = {
   index,
@@ -16,19 +16,23 @@ module.exports = {
 };
 
 function show(req, res) {
-  request(driversURL, function(err, response, body) {
-    const driverData = JSON.parse(body);
+  request(teamsURL, function(err, response, body) {
+    const teamData = JSON.parse(body);
+    // console.log(teamData.MRData.StandingsTable.StandingsLists[0].ConstructorStandings);
    
-            User.findById(req.params.id, function(err, team) {
+            User.findById(req.params.id, req.body, function(err, team) {
+              
               let red = req.params.id;
               console.log(red);
               console.log(req.body);
+
               
               res.render('teams/show', {
                 title: 'Edit Team',
                 user: req.user,
                 red,
-                driverData: driverData.MRData.RaceTable.Races[0],
+                teamData: teamData.MRData.StandingsTable.StandingsLists[0].ConstructorStandings,
+                
               });
             });
           });
@@ -37,34 +41,18 @@ function show(req, res) {
         function create(req, res) {
           
           User.findById(req.session.passport.user, function(err, user) {
-            user.teams.push(req.body);
-            user.save(function(err) {
-              res.redirect('/teams');
+         
+                                        
+              user.teams.push(req.body);
+              user.save(function(err) {
+                res.redirect('/teams');
+              
             });
             console.log(req.body);
             
           });
           
-    // const getUser = function() { 
-      //   return User.findById(req.session.passport.user)
-      //   .then(user => user).catch(error => console.log(error))
-      // }  
-      //  const team = new Team(req.body)
-      //  getUser().then(user => {
-        //    user.teams.push(team)
-        //    team.save()
-        //    console.log(user)
-        //    user.save()
-        //    return user
-        //   })
-        //   .then(user => {
-          
-          //    res.redirect('/teams')
-          //  })
-          //  .catch(error => {
-            //    console.log(error)
-            //    res.send(error)
-            //  }) 
+    
                   
                   
                 }
@@ -72,10 +60,10 @@ function show(req, res) {
                 function newTeam(req, res) {
                   request(teamsURL, function(err, response, body) {
                     const teamData = JSON.parse(body);
-                    // console.log(teamData.MRData.ConstructorTable.Constructors);
+                    // console.log(teamData.MRData.ConstructorStandings);
                     res.render('teams/new', {
                       user: req.user,
-                      teamData: teamData.MRData.ConstructorTable.Constructors,
+                     
                     });
                   });
                 }

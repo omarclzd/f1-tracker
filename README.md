@@ -1,6 +1,6 @@
 # F1 Midfield Fantasy
 
-F1 Midfield Fantasy is an application that allows the user to create a team of five drivers from the twenty that compete in the Formula One Championship. The user will be able to manage the team by adding or removing drivers. The application will update after every grand prix and show the results of the race. Each race, the drivers will accumulate points based on their grid positions. However, in order for the user’s team to accumulate points, the selected drivers must finish in positions 4th, 5th, 6th, 7th, or 8th. If a user’s driver does not finish in one of the previously mentioned positions, he will not accumulate any points. 
+F1 tracker is an app that allows the user to keep track of their selected teams and drivers that compete in the Formula 1 World Championship. The user is able to select and add teams/drivers to their profile that is created when logged in. The user is then able to see live updates of each teams/drivers stats after every race. The user is also able to remove teams/drivers from their profile.
 
 
 ## Screenshots
@@ -14,26 +14,50 @@ F1 Midfield Fantasy is an application that allows the user to create a team of f
 ## Pseudocode
 
 
+
 Set up Oauth verification. 
 
 Set up models with driver, team, and user Schema. 
-Assing properties within schemas:
+Assign properties within schemas:
 Driver Properties: name, team, position, points
 UserTeam Properties: drivers, name
 User Properties: name, email, Userteam
 
 Require models in routes
 Set routes to get all drivers, create new team, add and remove driver, and delete team.
+Create request function to pull teams/drivers info from API
+
+Set routes to get post put and delete
+Set route to get index
+Set route to get new
+Set route to post new to index
+Set route to get show
+
+Set controller to render index
+Set controller to render new
+Set controller to post new to index
+Set controller to get show
+Set controller to create post
+Set controller to render request from api 
+
+Set route to delete selected id
+Set controller to delete selected id
+
+Set route to get to edit view
+Create edit view
+Set controller to get to edit view
+Set route to put update on id
+
 
 
 
 ## Technologies Used
 
-JavaScrip, Express, Node.js, MongoDb, Mongoose
+JavaScrip, Express, Node.js, MongoDb, Mongoose, Heroku
 
 ## Getting Sarted 
 
-<!-- Link to game - [Commute](https://omarclzd.github.io/commute-game/) -->
+Link to game - [F1 Tracker](https://whispering-mountain-71039.herokuapp.com)
 
 ## Authors
 
