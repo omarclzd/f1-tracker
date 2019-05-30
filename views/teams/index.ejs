@@ -97,10 +97,10 @@
 </aside>
 <main class="col s6">
 
-  <hr>
+  
      <div>
        <% if (driverData) { %>
-        <div class="row center">
+        <div class="row center #ffe57f amber accent-1">
             <div class="col s4">
               <h5>Season: <%= driverData.season %></h4>
             </div>
@@ -113,7 +113,7 @@
         </div>
         <div class="row center">
             <h5>Results</h5>
-            <table>
+            <table class="striped">
               <thead>
                 <tr>
                   <th>Position</th>
@@ -147,7 +147,7 @@
  
 
 </main>
-<aside>
+<aside class="center">
 <% if (user) { %>
   <h3>Top 3 drivers stats</h3>
   <table>

@@ -5,11 +5,11 @@ F1 tracker is an app that allows the user to keep track of their selected teams 
 
 ## Screenshots
 
-<!-- ![commute game wireframe](../master/images/commute-layout3.png)
+ ![Landing Page](../master/images/f1-tracker.png)
 
-![game over state](../master/images/gameover.png)
+![Logged in](../master/images/f1-tracker-loggedin.png)
 
-![win state](../master/images/winner.png) -->
+
 
 ## Pseudocode
 
