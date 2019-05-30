@@ -114,14 +114,10 @@ function show(req, res) {
 function updateTeam(req, res, next) {
   User.findByIdAndUpdate(req.params.id, req.body, function(err, user) {
     user.save(function(err) {
-        if (err) return res.redirect('/teams');
         res.redirect('/teams')
     });
-});
-  
-  
-    
-    }
+  }); 
+}
     
   
   
