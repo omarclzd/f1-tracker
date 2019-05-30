@@ -21,7 +21,6 @@ constructorId: String,
 
 var userSchema = new mongoose.Schema({
   name: String,
-  favoriteTeam: String,
   email: String,
   avatar: String,
   googleId: String,

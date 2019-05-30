@@ -35,7 +35,8 @@
 <section class="row">
 <aside class="col s3">
   <% if (user) { %>
-  <h3>User's Team</h3>
+  <h3>Wellcome <%= user.name %></h3>
+  <div><a href="/teams/<%= user._id %>/edit">Change Name</a></div>
   
   <table>
     <thead>
@@ -54,7 +55,7 @@
             <button type="submit">X</button>
           </form></td>
         
-           <td><a href="/teams/<%= t._id %>/edit">update</a></td>
+          
           
         </tr>
      <% }); %>
