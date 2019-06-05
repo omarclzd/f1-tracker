@@ -27,26 +27,26 @@ Require models in routes
 Set routes to get all drivers, create new team, add and remove driver, and delete team.
 Create request function to pull teams/drivers info from API
 
-Set routes to get post put and delete
-Set route to get index
-Set route to get new
-Set route to post new to index
-Set route to get show
+Set routes to get post put and delete.
+Set route to get index.
+Set route to get new.
+Set route to post new to index.
+Set route to get show.
 
-Set controller to render index
-Set controller to render new
-Set controller to post new to index
-Set controller to get show
-Set controller to create post
-Set controller to render request from api 
+Set controller to render index.
+Set controller to render new.
+Set controller to post new to index.
+Set controller to get show.
+Set controller to create post.
+Set controller to render request from api. 
 
-Set route to delete selected id
-Set controller to delete selected id
+Set route to delete selected id.
+Set controller to delete selected id.
 
-Set route to get to edit view
-Create edit view
-Set controller to get to edit view
-Set route to put update on id
+Set route to get to edit view.
+Create edit view.
+Set controller to get to edit view.
+Set route to put update on id.
 
 
 
@@ -65,6 +65,8 @@ Link to game - [F1 Tracker](https://whispering-mountain-71039.herokuapp.com)
 
 ## Next Steps
 
+* Add team and driver stats
+* Add team and driver icons
 
 
 
