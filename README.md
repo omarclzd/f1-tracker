@@ -9,6 +9,8 @@ F1 tracker is an app that allows the user to keep track of their selected teams 
 
 ![Logged in](../master/images/f1-tracker-loggedin.png)
 
+![ERD](../master/images/erd.png)
+
 
 
 ## Pseudocode
