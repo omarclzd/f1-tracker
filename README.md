@@ -1,4 +1,4 @@
-# F1 Midfield Fantasy
+# F1 Tracker
 
 F1 tracker is an app that allows the user to keep track of their selected teams and drivers that compete in the Formula 1 World Championship. The user is able to select and add teams/drivers to their profile that is created when logged in. The user is then able to see live updates of each teams/drivers stats after every race. The user is also able to remove teams/drivers from their profile.
 
